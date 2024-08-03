@@ -1,0 +1,723 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Urbanist", sans-serif;
+  text-decoration: none;
+  transition: 0.2s ease-in;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  /* Light THeme */
+  --background-light: white;
+  --background-light-2: white;
+  --background-gradient-1-light: lightgray;
+  --background-gradient-2-light: lightgray;
+
+  --primary-gradient-1: green;
+  --primary-gradient-2: lightgray;
+  --primary-gradient-3: lightgray;
+  /* Dark Theme */
+  --background-dark: #333333;
+  --background-dark-2: #292929;
+
+  --style-button-1: linear-gradient(
+    to right,
+    var(--primary-gradient-1),
+    var(--primary-gradient-2)
+  );
+  --style-button-2: linear-gradient(
+    to right,
+    var(--primary-gradient-1),
+    var(--primary-gradient-3)
+  );
+
+  --style-background-gradient: linear-gradient(
+    47deg,
+    var(--background-gradient-1-light),
+    var(--background-gradient-2-light)
+  );
+  --style-background-gradient-dark: linear-gradient(47deg, black, gray);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 50px;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.224);
+  background: transparent;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  box-sizing: border-box;
+  z-index: 2;
+  backdrop-filter: blur(10px);
+}
+
+.mall {
+  font-weight: bolder;
+  background: linear-gradient(
+    146deg,
+    var(--primary-gradient-3),
+    var(--primary-gradient-1)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+nav .changeTheme {
+  background-color: var(--background-dark-2);
+  border-radius: 30px;
+  width: 60px;
+  padding: 3px;
+  position: absolute;
+  left: 45vw;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+
+nav input {
+  visibility: hidden;
+  position: absolute;
+}
+
+nav input[type="checkbox"]:checked ~ .check {
+  transform: translateX(15px);
+}
+
+nav .check {
+  width: 25px;
+  height: 25px;
+  background-color: white;
+  border-radius: 50%;
+  transform: translateX(-15px);
+  transition: 0.3s ease-in-out;
+}
+
+nav .menu a {
+  text-decoration: none;
+  color: black;
+  margin-right: 30px;
+}
+
+nav .menu .contact {
+  background: var(--style-button-2);
+  padding: 5px 10px;
+  color: white;
+  border-radius: 30px;
+}
+
+header {
+  background: var(--style-background-gradient);
+  display: grid;
+  grid-template-areas:
+    "judul gambar"
+    "deskripsi gambar"
+    "explore gambar";
+  padding: 100px;
+  padding-top: 180px;
+  height: 100vh;
+  box-sizing: border-box;
+  position: relative;
+  transition: 0.3s;
+}
+
+header .info {
+  position: absolute;
+  bottom: 70px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+
+header .info .txt {
+  padding: 10px;
+  border-radius: 30px;
+  background-color: rgba(0, 0, 0, 0.301);
+  color: white;
+}
+
+header .info .txt i {
+  margin-right: 7px;
+}
+
+.judul {
+  grid-area: judul;
+  font-weight: bold;
+  font-size: 3em;
+  margin-top: 50px;
+}
+
+.deskripsi {
+  grid-area: deskripsi;
+  color: var(--background-dark-2);
+  opacity: 0.8;
+  height: max-content;
+  transform: translateY(-40px);
+}
+
+.explore {
+  grid-area: explore;
+  transform: translateY(-10px);
+}
+
+.gambar {
+  grid-area: gambar;
+  display: flex;
+  justify-content: center;
+}
+
+.gambar img {
+  width: 50px;
+}
+
+.gambar .cycle-1 {
+  width: 350px;
+  height: 350px;
+  background-color: var(--background-light);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.135);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gambar .cycle-2 {
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.13);
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  z-index: 1;
+  background-color: transparent;
+  backdrop-filter: blur(10px);
+}
+
+.gambar img {
+  position: absolute;
+}
+
+.gambar .design {
+  width: 150px;
+  animation: iconDesignMelayang 3s infinite ease-in-out;
+  transform: translate(140px, -90px) rotate(25deg);
+}
+
+.gambar .coding {
+  width: 80px;
+  transform: translate(-65px, 170px);
+  animation: iconCodingMelayang 5s infinite ease-in-out;
+}
+
+.gambar .video {
+  transform: translate(-130px, -90px) rotate(-15deg);
+  animation: iconVideoMelayang 4s infinite ease-in-out;
+}
+
+.explore a {
+  background: var(--style-button-1);
+  text-decoration: none;
+  color: white;
+  padding: 20px 40px;
+  font-weight: bold;
+  border-radius: 7px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  width: min-content;
+  letter-spacing: 2px;
+}
+
+.explore a i {
+  margin-right: 5px;
+}
+
+.isi-content {
+  padding: 50px 100px;
+  position: relative;
+}
+
+.tipe-karya {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.judulKarya {
+  font-size: 2em;
+  margin-bottom: 35px;
+}
+
+.tipe-karya .tipe {
+  background: var(--style-background-gradient);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  border-radius: 25px;
+  padding: 10px 0;
+  gap: 15px;
+}
+
+.tipe .cardtype {
+  background-color: var(--background-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2px 10px 10px 10px;
+  min-width: 200px;
+  border-radius: 30px;
+  cursor: pointer;
+  color: black;
+}
+
+.tipe .cardtype:hover .gambar {
+  transform: translateY(-35px);
+}
+
+.cardtype .gambar {
+  background-color: black;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  transform: translateY(-25px);
+  transition: ease-in-out 0.3s;
+}
+
+.graphic-design .gambar {
+  background-image: url("img/tipe\ design.png");
+  background-size: cover;
+}
+
+.editing-video .gambar {
+  background-image: url("img/tipe\ video.png");
+  background-size: cover;
+}
+
+.coding .gambar {
+  background-image: url("img/tipe\ coding.png");
+  background-size: cover;
+}
+
+.logo-animation .gambar {
+  background-image: url("img/tipe\ logo.png");
+  background-size: cover;
+}
+
+.kumpulankarya {
+  margin-top: 150px;
+}
+
+.kumpulankarya .judulKarya {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.judulKarya .text {
+  width: max-content;
+  background-color: transparent;
+  padding: 0 100px;
+}
+
+.kumpulankarya .judulKarya .line {
+  width: 400px;
+  height: 1px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+}
+
+.line.left,
+.line.right {
+  z-index: -1;
+}
+
+.line.left {
+  left: 0;
+  background-color: var(--primary-gradient-1);
+}
+
+.line.left::before {
+  width: 50px;
+  height: 10px;
+  content: "";
+  background-color: var(--primary-gradient-1);
+  position: absolute;
+  right: 0;
+}
+
+.line.right {
+  right: 0;
+  background-color: var(--primary-gradient-2);
+}
+
+.line.right::before {
+  width: 50px;
+  height: 10px;
+  content: "";
+  background-color: var(--primary-gradient-2);
+  position: absolute;
+  left: 0;
+}
+
+.karyas {
+  background-color: var(--background-light-2);
+  padding: 10px;
+  border-radius: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 10px;
+}
+
+.karya {
+  background: linear-gradient(
+    -15deg,
+    var(--primary-gradient-1),
+    var(--primary-gradient-2)
+  );
+  min-width: 250px;
+  max-width: 250px;
+  padding: 3px;
+  border-radius: 25px;
+}
+
+.karya.full {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.karya.full:hover {
+  transform: translateY(-10px);
+}
+
+.karya.full .judulthumb {
+  display: flex;
+  align-items: center;
+  font-weight: bolder;
+  flex-direction: column;
+  font-size: 1.5em;
+  color: white;
+}
+
+.karya.full .judulthumb i {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.karya.full .judulthumb span {
+  text-align: center;
+}
+
+.karyas a {
+  color: black;
+}
+
+.karya .card {
+  background-color: white;
+  border-radius: 25px;
+  padding: 15px;
+  height: 100%;
+  box-sizing: border-box;
+  transition: 0.3s ease-in-out;
+}
+
+.karya .card .thumb {
+  width: 100%;
+  background-size: cover;
+  border-radius: 25px;
+  height: 250px;
+  transition: 0.3s;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  background-position: center;
+}
+
+.karya .card .judulthumb {
+  padding: 15px 0;
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.karya:hover .card {
+  transform: translateY(-35px);
+  box-shadow: 0 -10px 15px rgba(0, 0, 0, 0.103);
+}
+
+footer {
+  padding: 50px;
+  background: var(--style-background-gradient);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+footer .logoFooter {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  transform: scale(2);
+  margin-bottom: 20px;
+}
+
+footer a {
+  background-color: #3b3339;
+  color: white;
+  padding: 5px 20px;
+  border-radius: 7px;
+  margin-bottom: 30px;
+}
+
+footer span {
+  font-size: 0.8em;
+}
+
+a.slidetoHeader {
+  min-width: 30px;
+  background-color: transparent;
+  backdrop-filter: blur(10px);
+  padding: 5px 20px;
+  color: white;
+  position: fixed;
+  text-align: center;
+  border-radius: 15px;
+  font-size: 2em;
+  right: 30px;
+  bottom: 30px;
+  box-shadow: -2px -2px 10px rgba(0, 0, 0, 0.217),
+    inset -2px -2px 10px rgba(0, 0, 0, 0.217),
+    2px 2px 10px rgba(255, 255, 255, 0.217),
+    inset 2px 2px 10px rgba(255, 255, 255, 0.217);
+}
+
+a.slidetoHeader i {
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.603);
+}
+
+a.slidetoHeader:hover i {
+  transform: translateY(-7px);
+}
+
+label.modedarkmobile {
+  min-width: 30px;
+  position: fixed;
+  background-color: transparent;
+  box-shadow: -2px -2px 10px rgba(0, 0, 0, 0.217),
+    inset -2px -2px 10px rgba(0, 0, 0, 0.217),
+    2px 2px 10px rgba(255, 255, 255, 0.217),
+    inset 2px 2px 10px rgba(255, 255, 255, 0.217);
+  bottom: 150px;
+  right: 30px;
+  padding: 5px 20px;
+  border-radius: 15px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+}
+
+label.modedarkmobile input {
+  position: absolute;
+  visibility: hidden;
+}
+
+label.modedarkmobile .indicator {
+  position: relative;
+  min-height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+label.modedarkmobile .indicator i {
+  font-size: 1.5em;
+  position: absolute;
+  color: white;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.603);
+}
+
+i.fa-sun {
+  opacity: 0;
+}
+label.modedarkmobile input[type="checkbox"]:checked ~ .indicator i.fa-moon {
+  opacity: 0;
+  transform: rotate(-45deg);
+}
+label.modedarkmobile input[type="checkbox"]:checked ~ .indicator i.fa-sun {
+  opacity: 1;
+  transform: rotate(45deg);
+}
+
+@keyframes iconDesignMelayang {
+  0%,
+  100% {
+    transform: translate(140px, -90px) rotate(25deg);
+  }
+  50% {
+    transform: translate(140px, -110px) rotate(30deg);
+  }
+}
+
+@keyframes iconVideoMelayang {
+  0%,
+  100% {
+    transform: translate(-130px, -90px) rotate(-15deg);
+  }
+  50% {
+    transform: translate(-130px, -50px) rotate(-5deg);
+  }
+}
+
+@keyframes iconCodingMelayang {
+  0%,
+  100% {
+    transform: translate(-65px, 170px);
+  }
+  50% {
+    transform: translate(-65px, 150px) rotate(5deg);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  body {
+    overflow-x: hidden;
+  }
+  /* *{border: 1px solid black;} */
+  nav {
+    display: none;
+  }
+  .gambar {
+    transform: scale(0.6) translateY(-40px);
+  }
+  header {
+    grid-template-areas: "gambar" "judul" "deskripsi" "explore";
+    padding: 25px;
+    justify-content: center;
+    text-align: center;
+    padding-top: 0;
+  }
+  .judul {
+    margin-top: 0;
+    font-size: 2em;
+    text-align: center;
+  }
+  .deskripsi {
+    transform: translateY(0);
+    font-size: 0.8em;
+  }
+  .deskripsi,
+  .explore,
+  .judul {
+    transform: translateY(-65px);
+  }
+  .explore {
+    display: flex;
+    justify-content: center;
+    height: max-content;
+    margin-top: 50px;
+  }
+  header .info {
+    font-size: 0.7em;
+    transform: translateY(50px);
+    display: inline-flex;
+  }
+  .info .txt {
+    width: 70%;
+    opacity: 0.6;
+  }
+
+  .isi-content {
+    padding: 15px;
+  }
+
+  .tipe-karya .tipe {
+    justify-content: center;
+    gap: 10px;
+    padding: 5px;
+  }
+
+  .tipe .cardtype {
+    min-width: 40%;
+    min-height: 50px;
+    margin-bottom: 20px;
+  }
+
+  .cardtype .gambar {
+    width: 50px;
+    height: 50px;
+  }
+
+  .kumpulankarya {
+    margin-top: 70px;
+  }
+
+  .kumpulankarya .line {
+    display: none;
+    visibility: hidden;
+  }
+
+  .karyas {
+    padding: 20px 0;
+    justify-content: center;
+  }
+
+  .karya {
+    min-width: 105px;
+    max-width: 105px;
+  }
+
+  .karya,
+  .karya .card,
+  .karya .card .thumb {
+    border-radius: 10px;
+  }
+
+  .karya .card {
+    padding: 0;
+    font-size: 0.7em;
+  }
+
+  .karya .card .thumb {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100px;
+  }
+
+  .karya.full .judulthumb {
+    font-size: 1em;
+  }
+
+  .karya.full .judulthumb i {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+
+  .karya:hover .card {
+    transform: translateY(-10px);
+  }
+
+  a.slidetoHeader {
+    bottom: 70px;
+  }
+
+  label.modedarkmobile {
+    display: flex;
+  }
+}
